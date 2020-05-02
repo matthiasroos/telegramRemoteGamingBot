@@ -2,8 +2,9 @@
 
 ## Requirements
 
-python-telegram-bot
+python-telegram-bot (installed with conda install -c conda-forge python-telegram-bot)
 
 ## Games
 
-Bring Your Own Book (byod.py)
+Bring Your Own Book (byob.py)
+
