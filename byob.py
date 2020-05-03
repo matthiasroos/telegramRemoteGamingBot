@@ -11,7 +11,13 @@ class BringYourOwnBook:
 
     def __init__(self):
         self.cards = []
-        self.rules_text = "-the rules-"
+        self.rules_text = 'Jeder hat vier Bücher vor sich, nummeriert mit 1-4. Auf den Befehl /card wird ein ' \
+                          'zufälliger Prompt gezogen, zusammen mit einer zufälligen Zahl zwischen 1 und 4, ' \
+                          'die das zu nutzende Buch angibt. Hat man eine passende Stelle gefunden, so schreibt ' \
+                          'man /stop. Die anderen haben daraufhin noch eine ' \
+                          'Minute Zeit. Der Bot sagt, wann die Minute vorbeit ist. Sollte man danach nichts ' \
+                          'passendes haben, so ist eine ' \
+                          'zufällige Seite aufzuschlagen und eine zufällige Zeile zu wählen.'
 
     def load_card_list(self) -> typing.List[str]:
         with open('BringYourOwnBook_deu.txt') as f:
