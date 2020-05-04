@@ -7,4 +7,5 @@ python-telegram-bot (installed with conda install -c conda-forge python-telegram
 ## Games
 
 Bring Your Own Book (byob.py)
+Just One (justone.py)
 
