@@ -10,6 +10,7 @@ class JustOne:
 
     def __init__(self):
         self.cards = []
+        self.users = []
         self.rules_text = ''
 
     def load_card_list(self) -> typing.List[str]:
@@ -28,7 +29,11 @@ class JustOne:
         context.bot.send_message(chat_id=update.effective_chat.id, text=self.rules_text)
 
     def checkin(self, update: telegram.Update, context: telegram.ext.CallbackContext):
-        print(update.effective_user)
+        self.users.append(update.effective_user)
+
+    def go(self, update: telegram.Update, context: telegram.ext.CallbackContext):
+        for user in self.users:
+            context.bot.send_message(chat_id=user.id, text=f'Hallo {user.first_name}')
 
     def card(self, update: telegram.Update, context: telegram.ext.CallbackContext):
         if self.cards:
@@ -49,6 +54,7 @@ class JustOne:
         dispatcher.add_handler(handler=telegram.ext.CommandHandler(command='start', callback=self.start))
         dispatcher.add_handler(handler=telegram.ext.CommandHandler(command='rules', callback=self.rules))
         dispatcher.add_handler(handler=telegram.ext.CommandHandler(command='checkin', callback=self.checkin))
+        dispatcher.add_handler(handler=telegram.ext.CommandHandler(command='go', callback=self.go))
         # dispatcher.add_handler(handler=telegram.ext.CommandHandler(command='card', callback=self.card))
         # dispatcher.add_handler(handler=telegram.ext.CommandHandler(command='stop', callback=self.stop))
         updater.start_polling()
